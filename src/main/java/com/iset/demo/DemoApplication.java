@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.iset.demo.dao.OffreRepository;
+import com.iset.demo.entity.Offre;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
