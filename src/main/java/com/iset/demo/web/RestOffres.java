@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,27 +17,26 @@ import com.iset.demo.dao.OffreRepository;
 import com.iset.demo.entity.Offre;
 
 @RestController
-@RequestMapping("/Offres")
 public class RestOffres {
 	@Autowired
 	OffreRepository offreRepository;
 
-	@GetMapping
+	@GetMapping("/Offres")
 	public List<Offre> getAll() {
 		return offreRepository.findAll();
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/Offres/{id}")
 	public Offre getById(@PathVariable Long id) {
 		return offreRepository.findById(id).get();
 	}
 
-	@PostMapping
-	public Offre save(Offre offre) {
+	@PostMapping("/offres")
+	public Offre save(@RequestBody Offre offre) {
 		return offreRepository.save(offre);
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/Offres/{id}")
 	public ResponseEntity<String> delete(@PathVariable Long id) {
 		if (offreRepository.findById(id).isPresent()) {
 			try {
@@ -46,6 +47,27 @@ public class RestOffres {
 			}
 		} else {
 			return ResponseEntity.status(404).body("Offre introuvable");
+		}
+	}
+
+	@PutMapping("/Offres/{id}")
+	public ResponseEntity<Offre> update(@PathVariable Long id, @RequestBody Offre offre) {
+		if (offreRepository.findById(id).isPresent()) {
+			try {
+				Offre offreToUpdate = offreRepository.findById(id).get();
+				offreToUpdate.setIntitulé(offre.getIntitulé());
+				offreToUpdate.setSpecialité(offre.getSpecialité());
+				offreToUpdate.setSociété(offre.getSociété());
+				offreToUpdate.setNbpostes(offre.getNbpostes());
+				offreToUpdate.setPays(offre.getPays());
+				offreToUpdate.setLogo(offre.getLogo());
+				offreRepository.save(offreToUpdate);
+				return ResponseEntity.ok(offreToUpdate);
+			} catch (Exception e) {
+				return ResponseEntity.status(500).body(null);
+			}
+		} else {
+			return ResponseEntity.status(404).body(null);
 		}
 	}
 
