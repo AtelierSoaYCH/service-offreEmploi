@@ -14,17 +14,19 @@ public class Offre {
 	String société;
 	int nbpostes;
 	String pays;
+	String logo;
 
 	public Offre() {
 	}
 
-	public Offre(String intitulé, String specialité, String société, int nbpostes, String pays) {
+	public Offre(String intitulé, String specialité, String société, int nbpostes, String pays, String logo) {
 		super();
 		this.intitulé = intitulé;
 		this.specialité = specialité;
 		this.société = société;
 		this.nbpostes = nbpostes;
 		this.pays = pays;
+		this.logo = logo;
 	}
 
 	public long getCode() {
@@ -79,6 +81,14 @@ public class Offre {
 	public String toString() {
 		return "Offre [code=" + code + ", intitulé=" + intitulé + ", specialité=" + specialité + ", société=" + société
 				+ ", nbpostes=" + nbpostes + ", pays=" + pays + "]";
+	}
+
+	public String getLogo() {
+		return logo;
+	}
+
+	public void setLogo(String logo) {
+		this.logo = logo;
 	}
 
 }

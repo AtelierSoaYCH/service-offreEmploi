@@ -19,9 +19,12 @@ public class DemoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception { // TODO Auto-generated method stub
-		offreRepository.save(new Offre("Développeur", "Informatique", "ISET", 2, "Tunisie"));
-		offreRepository.save(new Offre("Developpeur", "informatique", "Talys", 3, "Tunisie"));
-		offreRepository.save(new Offre("Architecte", "informatique", "SIS", 2, "Allemagne"));
+		offreRepository.save(new Offre("Développeur", "Informatique", "ISET", 2, "Tunisie",
+				"https://i.ytimg.com/vi/KInCaVtQFxk/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBBzu18BYmFpAfq-IXqAmv7y7DM0Q"));
+		offreRepository.save(new Offre("Developpeur", "informatique", "Talys", 3, "Tunisie",
+				"https://i.ytimg.com/vi/KInCaVtQFxk/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBBzu18BYmFpAfq-IXqAmv7y7DM0Q"));
+		offreRepository.save(new Offre("Architecte", "informatique", "SIS", 2, "Allemagne",
+				"https://i.ytimg.com/vi/KInCaVtQFxk/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBBzu18BYmFpAfq-IXqAmv7y7DM0Q"));
 	}
 
 }
